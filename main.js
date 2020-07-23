@@ -4,18 +4,9 @@ let cartValue = document.getElementById("cartValueplus").value;
 let cartValueNumber = parseInt(cartValue);
 let iphonePrice = 1219;
 plusBtn.addEventListener("click", function(){
-
-    cartValueNumber = cartValueNumber +1;
-    document.getElementById("cartValueplus").value = cartValueNumber;
-    priceCalculation(cartValueNumber, iphonePrice);
+    addCartNumber("cartValueplus");
+    priceCalculation(cartValueNumber, "iphonePrice");
 });
-
-
-// Plus Button Function
-
-// function addCartNumber(id){
-    
-// }
 
 
 //Discrement of cart
@@ -23,8 +14,7 @@ plusBtn.addEventListener("click", function(){
 const minusBtn = document.getElementById("minusBtn");
 minusBtn.addEventListener("click", function(){
     if(cartValueNumber > 1){
-        cartValueNumber = cartValueNumber -1;
-        document.getElementById("cartValueplus").value = cartValueNumber;
+        minusCartNumber("cartValueplus");
         priceCalculation(cartValueNumber, iphonePrice);
     }
     else{
@@ -40,20 +30,34 @@ removeBtn.addEventListener("click", function(event){
     cartItem.style.display = "none";
 });
 
+// Plus Button Function
 
+function addCartNumber(id){
+    cartValueNumber = cartValueNumber +1;
+    document.getElementById(id).value = cartValueNumber;
+}
+
+//Minus Button Function
+
+function minusCartNumber(id){
+    cartValueNumber = cartValueNumber - 1;
+    document.getElementById(id).value = cartValueNumber;
+}
 
 //Price calculation function
 
-function priceCalculation(cartValueNumber, iphonePrice){
+function priceCalculation(cartValueNumber, id){
     let totalPrice = cartValueNumber * iphonePrice;
-    document.getElementById("iphonePrice").innerText = totalPrice;
+    document.getElementById(id).innerText = totalPrice;
 }
 
 
 //Next Cart Item
 
-const plusBtnNext = document.getElementById("click", function(){
-
+const plusBtnNext = document.getElementById("plusBtnNext")
+plusBtnNext.addEventListener("click", function(){
+    addCartNumber("cartValueplusNext");
+    priceCalculation(cartValueNumber, "iphoneCasePrice");
 });
 
 
