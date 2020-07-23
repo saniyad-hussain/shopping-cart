@@ -7,10 +7,16 @@ plusBtn.addEventListener("click", function(){
 
     cartValueNumber = cartValueNumber +1;
     document.getElementById("cartValueplus").value = cartValueNumber;
-
-    // let iphonePriceSpot = document.getElementById("iphonePrice").innerText;
     priceCalculation(cartValueNumber, iphonePrice);
 });
+
+
+// Plus Button Function
+
+// function addCartNumber(id){
+    
+// }
+
 
 //Discrement of cart
 
@@ -26,8 +32,28 @@ minusBtn.addEventListener("click", function(){
     }
 });
 
+//Remove Item From Cart
+
+const removeBtn = document.getElementById("removeBtn");
+removeBtn.addEventListener("click", function(event){
+    const cartItem = event.target.parentNode.parentNode.parentNode;
+    cartItem.style.display = "none";
+});
+
+
+
+//Price calculation function
 
 function priceCalculation(cartValueNumber, iphonePrice){
     let totalPrice = cartValueNumber * iphonePrice;
     document.getElementById("iphonePrice").innerText = totalPrice;
 }
+
+
+//Next Cart Item
+
+const plusBtnNext = document.getElementById("click", function(){
+
+});
+
+
