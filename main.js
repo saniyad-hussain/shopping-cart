@@ -2,10 +2,10 @@
 const plusBtn = document.getElementById("plusBtn");
 let cartValue = document.getElementById("cartValueplus").value;
 let cartValueNumber = parseInt(cartValue);
-let cartValuepNext = document.getElementById("cartValueplusNext");
+let cartValuepNext = document.getElementById("cartValueplusNext").value;
 let cartValuepNextNumber = parseInt(cartValuepNext);
-let iphonePrice = 1219;
-let iphoneCase = 59;
+let iphonePrice = 10;
+let iphoneCase = 5;
 
 plusBtn.addEventListener("click", function(){
     addCartNumber("cartValueplus");
@@ -60,6 +60,7 @@ function minusCartNumber(id){
     }
     else{
         alert("Cart Value cant be zero");
+        //document.getElementById("subTotal").innerText =  ;
     }
 }
 
@@ -68,7 +69,18 @@ function minusCartNumber(id){
 function priceCalculation(productPrice, id){
     let totalPrice = cartValueNumber * productPrice;
     document.getElementById(id).innerText = totalPrice;
-    
+    let subTotal = document.getElementById("subTotal").innerText;
+    let subTotalNumber = parseInt(subTotal);
+    let currentTargetId = event.currentTarget.getAttribute('id');
+    if(currentTargetId == 'plusBtn' || currentTargetId == 'plusBtnNext' ){
+        document.getElementById("subTotal").innerText = subTotalNumber + productPrice; 
+    }
+    else if(currentTargetId == 'minusBtn' || currentTargetId == 'minusBtnNext'){
+         if(cartValueNumber == 1){
+            document.getElementById("subTotal").innerText = subTotalNumber;
+         }
+         document.getElementById("subTotal").innerText = subTotalNumber - productPrice; 
+    }
 }
 
 
