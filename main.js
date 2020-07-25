@@ -8,8 +8,10 @@ let iphonePrice = 10;
 let iphoneCase = 5;
 
 plusBtn.addEventListener("click", function(){
-    addCartNumber("cartValueplus");
-    priceCalculation(iphonePrice, "iphonePrice");
+    //addCartNumber("cartValueplus");
+    cartValueNumber = cartValueNumber +1;
+    document.getElementById("cartValueplus").value = cartValueNumber;
+    priceCalculation(cartValueNumber, iphonePrice, "iphonePrice");
 });
 
 
@@ -17,8 +19,15 @@ plusBtn.addEventListener("click", function(){
 
 const minusBtn = document.getElementById("minusBtn");
 minusBtn.addEventListener("click", function(){
-        minusCartNumber("cartValueplus");
-        priceCalculation(iphonePrice, "iphonePrice");
+        //minusCartNumber(cartValueNumber, "cartValueplus");
+        if(cartValueNumber > 1){
+            cartValueNumber = cartValueNumber - 1;
+            document.getElementById("cartValueplus").value = cartValueNumber;
+        }
+        else{
+            alert("Cart Value cant be zero");
+        }
+        priceCalculation(cartValueNumber, iphonePrice, "iphonePrice");
    
 });
 
@@ -53,21 +62,20 @@ function addCartNumber(id){
 
 //Minus Button Function
 
-function minusCartNumber(id){
-    if(cartValueNumber > 1){
-        cartValueNumber = cartValueNumber - 1;
-        document.getElementById(id).value = cartValueNumber;
+function minusCartNumber(cartValueM, id){
+    if(cartValueM > 1){
+        cartValueM = cartValueM - 1;
+        document.getElementById(id).value = cartValueM;
     }
     else{
         alert("Cart Value cant be zero");
-        //document.getElementById("subTotal").innerText =  ;
     }
 }
 
 //Price calculation function
 
-function priceCalculation(productPrice, id){
-    let totalPrice = cartValueNumber * productPrice;
+function priceCalculation(cartValue, productPrice, id){
+    let totalPrice = cartValue * productPrice;
     document.getElementById(id).innerText = totalPrice;
     let subTotal = document.getElementById("subTotal").innerText;
     let subTotalNumber = parseInt(subTotal);
@@ -76,9 +84,6 @@ function priceCalculation(productPrice, id){
         document.getElementById("subTotal").innerText = subTotalNumber + productPrice; 
     }
     else if(currentTargetId == 'minusBtn' || currentTargetId == 'minusBtnNext'){
-         if(cartValueNumber == 1){
-            document.getElementById("subTotal").innerText = subTotalNumber;
-         }
          document.getElementById("subTotal").innerText = subTotalNumber - productPrice; 
     }
 }
@@ -88,8 +93,10 @@ function priceCalculation(productPrice, id){
 
 const plusBtnNext = document.getElementById("plusBtnNext")
 plusBtnNext.addEventListener("click", function(){
-    addCartNumber("cartValueplusNext");
-    priceCalculation(iphoneCase, "iphoneCasePrice");
+    //addCartNumber("cartValueplusNext");
+    cartValuepNextNumber = cartValuepNextNumber +1;
+    document.getElementById("cartValueplusNext").value = cartValuepNextNumber;
+    priceCalculation(cartValuepNextNumber, iphoneCase, "iphoneCasePrice");
 });
 
 
@@ -97,6 +104,13 @@ plusBtnNext.addEventListener("click", function(){
 
 const minusBtnNext = document.getElementById("minusBtnNext");
 minusBtnNext.addEventListener("click", function(){
-    minusCartNumber("cartValueplusNext");
-    priceCalculation(iphoneCase, "iphoneCasePrice");
+    //minusCartNumber(cartValuepNextNumber, "cartValueplusNext");
+    if(cartValuepNextNumber > 1){
+        cartValuepNextNumber = cartValuepNextNumber - 1;
+        document.getElementById("cartValueplusNext").value = cartValuepNextNumber;
+    }
+    else{
+        alert("Cart Value cant be zero");
+    }
+    priceCalculation(cartValuepNextNumber, iphoneCase, "iphoneCasePrice");
 });
