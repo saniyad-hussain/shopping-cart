@@ -20,7 +20,7 @@ plusBtn.addEventListener("click", function(){
 const minusBtn = document.getElementById("minusBtn");
 minusBtn.addEventListener("click", function(){
         //minusCartNumber(cartValueNumber, "cartValueplus");
-        if(cartValueNumber > 1){
+        if(cartValueNumber > 0){
             cartValueNumber = cartValueNumber - 1;
             document.getElementById("cartValueplus").value = cartValueNumber;
         }
@@ -48,7 +48,7 @@ removeBtn2.addEventListener("click", function(event){
 
 // Remove Function
 
-function removeButton(){
+function removeButton(id){
     const cartItem = event.target.parentNode.parentNode.parentNode;
     cartItem.style.display = "none";
 }
@@ -63,7 +63,7 @@ function addCartNumber(id){
 //Minus Button Function
 
 function minusCartNumber(cartValueM, id){
-    if(cartValueM > 1){
+    if(cartValueM > 0){
         cartValueM = cartValueM - 1;
         document.getElementById(id).value = cartValueM;
     }
@@ -82,10 +82,17 @@ function priceCalculation(cartValue, productPrice, id){
     let currentTargetId = event.currentTarget.getAttribute('id');
     if(currentTargetId == 'plusBtn' || currentTargetId == 'plusBtnNext' ){
         document.getElementById("subTotal").innerText = subTotalNumber + productPrice; 
+        document.getElementById("tax").innerText = (subTotalNumber + productPrice) * 0.05;
+        let tax = parseFloat(document.getElementById("tax").innerText);
+        document.getElementById("grandTotal").innerText = (subTotalNumber + productPrice) + tax;
     }
     else if(currentTargetId == 'minusBtn' || currentTargetId == 'minusBtnNext'){
          document.getElementById("subTotal").innerText = subTotalNumber - productPrice; 
+         document.getElementById("tax").innerText = (subTotalNumber - productPrice) * 0.05;
+         let tax = parseFloat(document.getElementById("tax").innerText);
+         document.getElementById("grandTotal").innerText = (subTotalNumber - productPrice) + tax;
     }
+    
 }
 
 
@@ -105,7 +112,7 @@ plusBtnNext.addEventListener("click", function(){
 const minusBtnNext = document.getElementById("minusBtnNext");
 minusBtnNext.addEventListener("click", function(){
     //minusCartNumber(cartValuepNextNumber, "cartValueplusNext");
-    if(cartValuepNextNumber > 1){
+    if(cartValuepNextNumber > 0){
         cartValuepNextNumber = cartValuepNextNumber - 1;
         document.getElementById("cartValueplusNext").value = cartValuepNextNumber;
     }
